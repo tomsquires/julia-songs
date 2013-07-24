@@ -1,26 +1,31 @@
 		
 $(function() {
-			
-			var activeSong;
-			
-			SC.initialize({
-				client_id: "af032ce963c757ca0407ef20b88503bb",
-			});
-			
-			$("#startSong").click(function() {
-				
-			SC.stream("/tracks/293", function(sound){
-				
-			if(activeSong){
-				activeSong.stop();
-				activeSong = undefined;
-			}
-			
+	
+	var activeSong;
+		
+	SC.initialize({
+		client_id: "af032ce963c757ca0407ef20b88503bb",
+	});
+
+	var playSong = function(songid) {	
+			stopSongs();	
+			SC.stream("/tracks/293", function(sound){			
 			activeSong = sound;
 			activeSong.play();
-		  });
 		});
-		
+	}
+	var stopSongs = function(){
+		if(activeSong){
+			activeSong.stop();
+			activeSong = undefined;
+		}
+	}
+	
+	$("#startSong1").click(function () {playSong(293)});
+	$("#startSong2").click(function () {playSong(293)});
+	$("#startSong3").click(function () {playSong(293)});
+	$("#stop").click(function () {stopSongs()});
+	
 	var getDemoContext = function () {
     var demoCtx,
         canvaName = "c01";
