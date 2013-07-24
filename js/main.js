@@ -1,20 +1,28 @@
 		
 $(function() {
 	
-	var activeSong;
+	var activeSong, bpm;
 		
 	SC.initialize({
 		client_id: "af032ce963c757ca0407ef20b88503bb",
 	});
 
 	var playSong = function(songid) {	
-			stopSongs();	
-			SC.stream("/tracks/293", function(sound){			
+	
+		stopSongs();
+			
+		$.get('http://api.soundcloud.com/tracks/293.json?client_id=af032ce963c757ca0407ef20b88503bb', function(data) {
+			var bmp = data.bpm;
+		});
+			
+		SC.stream("/tracks/293", function(sound){			
 			activeSong = sound;
 			activeSong.play();
 			_demo.setAnimate(true);
 		});
 	}
+	
+	http://api.soundcloud.com/tracks/293.json?client_id=af032ce963c757ca0407ef20b88503bb
 	var stopSongs = function(){
 	    _demo.setAnimate(false);
 		if(activeSong){
@@ -59,12 +67,12 @@ $(function() {
         _chronoPass  = 0,
         _deltaTime   = 0,
         _drawTicks   = 0;
-        
+    
     _demo.subscribe(function(a, b) {
         _constAValue.innerHTML = a.toFixed(3);
         _constBValue.innerHTML = b.toFixed(3);
-        _constA.value = a * 1000;
-        _constB.value = b * 1000;
+        _constA.value = a * 10 * bpm;
+        _constB.value = b * 10 * bpm;
     });
 
     _demo.subscribe(function() {
