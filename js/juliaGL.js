@@ -37,7 +37,8 @@ var JuliaGLDrawer = function (id){
         _iteration        = 200,
         _palette          = new Palette(),
         _c                = new Complex(-0.85, 0.2),
-        _previousConstant = new Complex(1, 1);
+        _previousConstant = new Complex(1, 1),
+		_factor = 1;
 
     this.getConstant = function (){
         return _c;
@@ -76,12 +77,13 @@ var JuliaGLDrawer = function (id){
         _animateFlag = false;
 
     this.animate = function(){
-        _degA += 1/100;
-        _degB += 1/1000;
+        _degA += _factor/100;
+        _degB += _factor/1000;
         _me.setConstant(Math.cos(_degA), Math.sin(_degB));
     }
     
-    this.setAnimate = function(flag){
+    this.setAnimate = function(flag, factor){
+		_factor = factor;
         _degA        = Math.acos(_c.a);
         _degB        = Math.asin(_c.b);
         _animateFlag = flag;

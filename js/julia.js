@@ -71,19 +71,21 @@ var JuliaDrawer = function (id){
     // Slowly change constant number of the Julia fractal set
     var _degA        = 0,
         _degB        = 0,
-        _animateFlag = false;
+        _animateFlag = false,
+		_factor = 1;
 
     this.animate = function(){
-        _degA += 1/100;
-        _degB += 1/1000;
+        _degA += _factor/100;
+        _degB += _factor/1000;
         _me.setConstant(Math.cos(_degA), Math.sin(_degB));
     }
     
-    this.setAnimate = function(flag){
+    this.setAnimate = function(flag, factor){
         _degA        = Math.acos(_c.a);
         _degB        = Math.asin(_c.b);
         _animateFlag = flag;
         _iteration   = (_animateFlag) ? _minIter : _maxIter;
+		_factor = factor;
     }
 
     //////////////////////////////////////////////////////////////////

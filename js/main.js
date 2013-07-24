@@ -11,20 +11,21 @@ $(function() {
 	
 		stopSongs();
 			
-		$.get('http://api.soundcloud.com/tracks/293.json?client_id=af032ce963c757ca0407ef20b88503bb', function(data) {
-			var bmp = data.bpm;
+		$.get('http://api.soundcloud.com/tracks/' + songid + '.json?client_id=af032ce963c757ca0407ef20b88503bb', function(data) {
+			var bpm = data.bpm;
+			var factor = bpm /50;
+			_demo.setAnimate(true, factor);
 		});
 			
-		SC.stream("/tracks/293", function(sound){			
+		SC.stream("/tracks/" + songid, function(sound){			
 			activeSong = sound;
 			activeSong.play();
-			_demo.setAnimate(true);
+			//_demo.setAnimate(true);
 		});
 	}
 	
-	http://api.soundcloud.com/tracks/293.json?client_id=af032ce963c757ca0407ef20b88503bb
 	var stopSongs = function(){
-	    _demo.setAnimate(false);
+	    //_demo.setAnimate(false);
 		if(activeSong){
 			activeSong.stop();
 			activeSong = undefined;
@@ -32,8 +33,8 @@ $(function() {
 	}
 	
 	$("#startSong1").click(function () {playSong(293)});
-	$("#startSong2").click(function () {playSong(293)});
-	$("#startSong3").click(function () {playSong(293)});
+	$("#startSong2").click(function () {playSong(14044361)});
+	$("#startSong3").click(function () {playSong(55997608)});
 	$("#stop").click(function () {stopSongs()});
 	
 	var getDemoContext = function () {
@@ -69,10 +70,10 @@ $(function() {
         _drawTicks   = 0;
     
     _demo.subscribe(function(a, b) {
-        _constAValue.innerHTML = a.toFixed(3);
-        _constBValue.innerHTML = b.toFixed(3);
-        _constA.value = a * 10 * bpm;
-        _constB.value = b * 10 * bpm;
+        _constAValue.innerHTML = a;
+        _constBValue.innerHTML = b;
+        _constA.value = a * 1000;
+        _constB.value = b * 1000;
     });
 
     _demo.subscribe(function() {
