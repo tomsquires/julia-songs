@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <link href='http://fonts.googleapis.com/css?family=Syncopate' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="css/demo.css">
+    </head>
+    
+    <body>
+
+            <canvas id="c01" width="900" height="900"></canvas>
+            <div class="option">
+                <div class="leftpan">
+                    <label for="constA">Constant A :</label>
+                    <input id="constA" type="range" min=-1000 max=1000 value=0 />
+                    <span id="constAValue">0</span>
+                    <br>
+                    <label for="constB">Constant B :</label>
+                    <input id="constB" type="range" min=-1000 max=1000 value=0 />
+                    <span id="constBValue">0</span>
+                </div>
+                <div class="rightpan">
+                    <label for="btAnimation">Animation : <span id="chrono"></span></label>
+                    <a id="btAnimation" class="btonoff off">Off</a>
+                </div>
+            </div>
+            <div id="palette">
+                <label for="gradient">Gradient :</label>
+                <div id="gradient" class="gradient"></div>
+            </div>
+        </div>
+		<button type="button" id="startSong">Click Me!</button>
+        <script type="text/javascript" language=javascript src="js/gl-matrix.js"></script>
+        <script type="text/javascript" language=javascript src="js/canvas3DDrawer.js"></script>
+        <script type="text/javascript" language=javascript src="js/complex.js"></script>
+        <script type="text/javascript" language=javascript src="js/palette.js"></script>
+        <script type="text/javascript" language=javascript src="js/juliaGL.js"></script>
+        <script type="text/javascript" language=javascript src="js/juliaDemo.js"></script>
+		<script type="text/javascript" language=javascript src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="http://connect.soundcloud.com/sdk.js"></script>
+		<script type="text/javascript" language=javascript src="js/main.js"></script>
+    </body>
+</html>
+
+
