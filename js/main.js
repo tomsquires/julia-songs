@@ -12,9 +12,11 @@ $(function() {
 			SC.stream("/tracks/293", function(sound){			
 			activeSong = sound;
 			activeSong.play();
+			_demo.setAnimate(true);
 		});
 	}
 	var stopSongs = function(){
+	    _demo.setAnimate(false);
 		if(activeSong){
 			activeSong.stop();
 			activeSong = undefined;
@@ -48,18 +50,6 @@ $(function() {
 	    var _demo        = getDemoContext(),
         _btAnimation = document.getElementById('btAnimation');
 
-    _btAnimation.onclick = function() {
-        if (this.className == 'btonoff on') {
-            this.className = 'btonoff off';
-            this.innerHTML = 'OFF';    
-            _demo.setAnimate(false);
-        } else {
-            this.className = 'btonoff on';
-            this.innerHTML = 'ON';
-            _demo.setAnimate(true);
-        }
-    };
-    _btAnimation.onclick();
 
     var _constAValue = document.getElementById('constAValue'),
         _constBValue = document.getElementById('constBValue'),
